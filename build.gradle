@@ -1,0 +1,15 @@
+subprojects {
+
+    apply plugin: 'java'
+
+    repositories {
+	mavenCentral()
+    }
+
+    dependencies {
+
+        // TODO : Add common dependencies here 
+
+    }
+
+}
