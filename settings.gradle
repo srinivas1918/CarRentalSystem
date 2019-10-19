@@ -1,2 +1,3 @@
 rootProject.name = 'car-rental-system'
 include 'profile-service'
+include 'gateway-service'
