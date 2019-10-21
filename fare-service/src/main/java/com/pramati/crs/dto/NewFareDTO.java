@@ -4,26 +4,26 @@ import java.util.Date;
 
 public class NewFareDTO {
 
-	private String vehicleCategory;
-	private String vehicleType;
+	private String carCategory;
+	private String carType;
 	private long vendorId;
 	private double pricePerDay;
 	private Date effectiveFrom;
 
-	public String getVehicleCategory() {
-		return vehicleCategory;
+	public String getCarCategory() {
+		return carCategory;
 	}
 
-	public void setVehicleCategory(String vehicleCategory) {
-		this.vehicleCategory = vehicleCategory;
+	public void setCarCategory(String carCategory) {
+		this.carCategory = carCategory;
 	}
 
-	public String getVehicleType() {
-		return vehicleType;
+	public String getCarType() {
+		return carType;
 	}
 
-	public void setVehicleType(String vehicleType) {
-		this.vehicleType = vehicleType;
+	public void setCarType(String carType) {
+		this.carType = carType;
 	}
 
 	public long getVendorId() {

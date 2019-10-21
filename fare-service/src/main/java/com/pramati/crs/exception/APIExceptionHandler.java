@@ -15,7 +15,7 @@ import com.pramati.crs.dto.MessageDTO;
 
 @ControllerAdvice
 public class APIExceptionHandler {
-
+	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<MessageDTO> handleException(Exception e) {
 		String errorMessage = e.getMessage();

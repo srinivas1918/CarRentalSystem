@@ -27,8 +27,11 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public List<BookingDTO> findAllBookings() {
+		
 		List<Booking> allBookings = bookingRepository.findAll();
+		
 		List<BookingDTO> allBookingDtos = allBookings.stream().map(BookingConverter::mapBookingToDTO).collect(Collectors.toList());
+		
 		return allBookingDtos;
 	}
 

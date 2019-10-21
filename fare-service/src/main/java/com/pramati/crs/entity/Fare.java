@@ -9,20 +9,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.ResourceSupport;
+
 @Entity
 @Table(name = "RS_FARE")
-public class Fare {
+public class Fare extends ResourceSupport{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private long id;
+	private long fareId;
 	
-	@Column(name = "VEHICLE_CATEGORY")
-	private String vehicleCategory;
+	@Column(name = "CAR_CATEGORY")
+	private String carCategory;
 	
-	@Column(name = "VEHICLE_TYPE")
-	private String vehicleType;
+	@Column(name = "CAR_TYPE")
+	private String carType;
 	
 	@Column(name = "VENDOR_ID")
 	private long vendorId;
@@ -39,28 +41,28 @@ public class Fare {
 	@Column(name = "IS_ACTIVE")
 	private boolean isActive;
 
-	public long getId() {
-		return id;
+	public long getFareId() {
+		return fareId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setFareId(long fareId) {
+		this.fareId = fareId;
 	}
 
-	public String getVehicleCategory() {
-		return vehicleCategory;
+	public String getCarCategory() {
+		return carCategory;
 	}
 
-	public void setVehicleCategory(String vehicleCategory) {
-		this.vehicleCategory = vehicleCategory;
+	public void setCarCategory(String carCategory) {
+		this.carCategory = carCategory;
 	}
 
-	public String getVehicleType() {
-		return vehicleType;
+	public String getCarType() {
+		return carType;
 	}
 
-	public void setVehicleType(String vehicleType) {
-		this.vehicleType = vehicleType;
+	public void setCarType(String carType) {
+		this.carType = carType;
 	}
 
 	public long getVendorId() {

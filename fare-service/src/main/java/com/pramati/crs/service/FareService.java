@@ -1,12 +1,15 @@
 package com.pramati.crs.service;
 
-import com.pramati.crs.dto.NewFareDTO;
+import java.util.List;
+
 import com.pramati.crs.dto.FareDTO;
-import com.pramati.crs.dto.MessageDTO;
+import com.pramati.crs.dto.NewFareDTO;
 
 public interface FareService {
 
-	public FareDTO getFare(String vehicleCategory, String vehicleType, long vendorId);
+	public FareDTO getActiveFare(String carCategory, String carType, long vendorId);
 
-	public MessageDTO addNewFare(NewFareDTO newFareDto);
+	public FareDTO addNewFare(NewFareDTO newFareDto);
+
+	public List<FareDTO> getAllFaresForVendor(long vendorId);
 }
