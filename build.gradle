@@ -5,18 +5,92 @@
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
 
-subprojects {
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+apply plugin: 'com.github.spotbugs'
 
+group = 'com.pramati'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    ext {
+        springBootVersion = '2.2.0.RELEASE'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
 
-    repositories {
-	mavenCentral()
+    sourceCompatibility = 1.8
+    version = '0.1-SNAPSHOT'
+
+    ext {
+        set('springCloudVersion', "Greenwich.SR3")
     }
 
     dependencies {
-
-        // TODO : Add common dependencies here 
-
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
     }
 
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
 }
+
+checkstyle {
+    toolVersion = '8.25'
+    ignoreFailures = true
+}
+
+spotbugs {
+    toolVersion = '4.0.0-beta4'
+    ignoreFailures = true
+    showProgress = true
+    effort = 'max'
+    reportLevel = 'low'
+    excludeFilter = file('config/spotbugs/exclude.xml')
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+pmd {
+    toolVersion = '6.18.0'
+    ignoreFailures = true
+    ruleSetFiles = files('config/pmd/ruleset.xml')
+    ruleSets = []
+}
+
+
