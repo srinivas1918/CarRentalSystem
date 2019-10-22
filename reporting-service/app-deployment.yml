@@ -1,32 +1,32 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: auth-service
+  name: reporting-service
 spec:
   selector:
-    app: auth-service-label
+    app: reporting-service-lable
   ports:
   - protocol: TCP
-    port: 8096
+    port: 8097
     targetPort: 80
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-service-deployment
+  name: reporting-service-deployment
 spec:
   selector:
       matchLabels:
-        app: auth-service-label
+        app: reporting-service-lable
   replicas: 1
   template:
     metadata:
       labels:
-        app: auth-service-label
+        app: reporting-service-lable
     spec:
       containers:
-        - name: auth-service-container
-          image: gcr.io/invertible-tree-252704/auth-service:latest
+        - name: booking-service-container
+          image: gcr.io/invertible-tree-252704/reporting-service:latest
           ports:
             - containerPort: 80

@@ -1,32 +1,33 @@
+
 kind: Service
 apiVersion: v1
 metadata:
-  name: auth-service
+  name: fare-service
 spec:
   selector:
-    app: auth-service-label
+    app: fare-service-lable
   ports:
   - protocol: TCP
-    port: 8096
+    port: 8094
     targetPort: 80
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-service-deployment
+  name: fare-service-deployment
 spec:
   selector:
       matchLabels:
-        app: auth-service-label
+        app: fare-service-lable
   replicas: 1
   template:
     metadata:
       labels:
-        app: auth-service-label
+        app: fare-service-lable
     spec:
       containers:
-        - name: auth-service-container
-          image: gcr.io/invertible-tree-252704/auth-service:latest
+        - name: fare-service-container
+          image: gcr.io/invertible-tree-252704/fare-service:latest
           ports:
             - containerPort: 80
