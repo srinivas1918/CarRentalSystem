@@ -25,11 +25,11 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.6
+      - image: mysql:8.0
         name: mysql-auth-service
         env:
         - name: MYSQL_DATABASE
-          value: 'db'
+          value: 'auth-service-db'
         # So you don't have to use root, but you can if you like
         - name: MYSQL_USER
           value: 'sa'
