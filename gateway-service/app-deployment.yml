@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gateway-service
+spec:
+  selector:
+    app: gateway-service-lable
+  ports:
+  - protocol: TCP
+    port: 8091
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-service-deployment
+spec:
+  selector:
+      matchLabels:
+        app: gateway-service-lable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gateway-service-lable
+    spec:
+      containers:
+        - name: gateway-service-container
+          image: gcr.io/invertible-tree-252704/gateway-service:latest
+          ports:
+            - containerPort: 80
