@@ -25,6 +25,6 @@ COPY --from=builder /opt/jdk-minimal /opt/jdk-minimal
 
 ENV JAVA_HOME=/opt/jdk-minimal
 ENV PATH="$PATH:$JAVA_HOME/bin"
-COPY target/search-service.jar /search-service.jar 
+COPY ./build/libs/search-service-0.1-SNAPSHOT.jar /search-service-0.1-SNAPSHOT.jar 
 EXPOSE 80
-ENTRYPOINT ["java", "-jar", "search-service.jar"]
+ENTRYPOINT ["java", "-jar", "search-service-0.1-SNAPSHOT.jar"]
