@@ -3,23 +3,14 @@ package com.pramati.crs.service;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.stereotype.Service;
-
-import com.pramati.crs.config.JpaTokenStore;
 
 @Service
 public class AuthServiceImpl implements AuthService {
 
 	@Autowired
 	private DefaultTokenServices tokenServices;
-
-	@Autowired
-	private JpaTokenStore tokenStore;
-
-	@Autowired
-	private AccessTokenConverter accessTokenConverter;
 
 	@Override
 	public boolean userLogout(HttpServletRequest request) {

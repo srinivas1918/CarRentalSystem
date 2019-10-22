@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pramati.crs.config.entity.ClientDetails;
+import com.pramati.crs.entity.ClientDetails;
 import com.pramati.crs.service.ClientDetailsService;
 
 @RestController

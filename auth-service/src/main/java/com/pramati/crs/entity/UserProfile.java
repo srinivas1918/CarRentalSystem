@@ -1,4 +1,4 @@
-package com.pramati.crs.config.entity;
+package com.pramati.crs.entity;
 
 import java.util.List;
 

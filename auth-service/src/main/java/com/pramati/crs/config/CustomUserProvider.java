@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.common.exceptions.UnauthorizedUserException;
 import org.springframework.stereotype.Component;
 
-import com.pramati.crs.config.entity.UserProfile;
+import com.pramati.crs.entity.UserProfile;
 import com.pramati.crs.repository.UserProfilesRepository;
 
 @Component

@@ -1,6 +1,6 @@
 package com.pramati.crs.service;
 
-import com.pramati.crs.config.entity.ClientDetails;
+import com.pramati.crs.entity.ClientDetails;
 
 public interface ClientDetailsService {
 
