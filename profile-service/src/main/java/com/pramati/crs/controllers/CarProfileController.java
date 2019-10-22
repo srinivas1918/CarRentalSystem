@@ -12,11 +12,24 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pramati.crs.profiles.dto.CarDTO;
-
+/**
+ * 
+ * @author srinivas nalla
+ * @version 1.0.0
+ * 
+ * Exposes the API to perform the CRUD operations
+ *
+ */
 @RestController
 @RequestMapping("v1/vendors/{userId}")
 public class CarProfileController {
 
+	/**
+	 * Save/update the Car of Vendor
+	 * 
+	 * @param userId : Vendor id
+	 * @param carDTO : Car object to be persisted/update
+	 */
 	@PostMapping("/cars")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void save(@PathVariable Long userId, @RequestBody CarDTO carDTO) {
@@ -24,6 +37,12 @@ public class CarProfileController {
 		
 	}
 	
+	/**
+	 * returns list of cars of a Vendor
+	 * 
+	 * @param userId 
+	 * @return: <code>List<CarDTO> </code>
+	 */
 	@GetMapping("/cars")
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<CarDTO> list(@PathVariable Long userId) {
@@ -31,6 +50,13 @@ public class CarProfileController {
 		return null;
 	}
 
+	/**
+	 * returns the <code>CarDTO</code>
+	 * 
+	 * @param userId 
+	 * @param carId
+	 * @return <CarDTO>
+	 */
 	@GetMapping("/cars/{carId}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public CarDTO getCarDetails(@PathVariable Long userId,@PathVariable Long carId) {

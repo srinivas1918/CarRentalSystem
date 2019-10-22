@@ -14,9 +14,23 @@ import com.pramati.crs.controller.interfaces.IBaseController;
 
 import io.swagger.annotations.ApiOperation;
 
-
+/**
+ * 
+ * @author srinivas nalla
+ * 
+ * Abstraction for common functions
+ * 
+ * @param <E> : Entity 
+ * @param <I> : Data Type
+ */
 public abstract class AbstractDataConroller<E, I extends Serializable> implements IBaseController<E, I>{
 
+	/**
+	 * @see IBaseController#save(Object)
+	 * 
+	 * Save/update the Entity
+	 * 
+	 */
 	@PostMapping("/")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@ApiOperation(notes = "save", value = "save or updates")
@@ -25,6 +39,10 @@ public abstract class AbstractDataConroller<E, I extends Serializable> implement
 		// TODO 		
 	}
 
+	/**
+	 * @see IBaseController#list()
+	 * 
+	 */
 	@GetMapping("/")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiOperation(notes = "list", value = "returns the List")
@@ -34,6 +52,9 @@ public abstract class AbstractDataConroller<E, I extends Serializable> implement
 		return null;
 	}
 
+	/**
+	 * @see IBaseController#getObject(Serializable)
+	 */
 	@GetMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	@Override
