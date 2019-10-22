@@ -24,8 +24,7 @@ public class AuthServiceApplication {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-				.apis(RequestHandlerSelectors.basePackage("com.pramati.crs.authservice")).paths(PathSelectors.any())
-				.build();
+				.apis(RequestHandlerSelectors.basePackage("com.pramati.crs")).paths(PathSelectors.any()).build();
 	}
 
 	private ApiInfo apiInfo() {
