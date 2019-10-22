@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: reporting-service
+spec:
+  selector:
+    app: reporting-service-lable
+  ports:
+  - protocol: TCP
+    port: 8097
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reporting-service-deployment
+spec:
+  selector:
+      matchLabels:
+        app: reporting-service-lable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: reporting-service-lable
+    spec:
+      containers:
+        - name: booking-service-container
+          image: gcr.io/invertible-tree-252704/reporting-service:latest
+          ports:
+            - containerPort: 80

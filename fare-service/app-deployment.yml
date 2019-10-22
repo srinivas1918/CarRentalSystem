@@ -1,0 +1,33 @@
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: fare-service
+spec:
+  selector:
+    app: fare-service-lable
+  ports:
+  - protocol: TCP
+    port: 8094
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fare-service-deployment
+spec:
+  selector:
+      matchLabels:
+        app: fare-service-lable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fare-service-lable
+    spec:
+      containers:
+        - name: fare-service-container
+          image: gcr.io/invertible-tree-252704/fare-service:latest
+          ports:
+            - containerPort: 80

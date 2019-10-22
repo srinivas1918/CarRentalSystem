@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: profile-service
+spec:
+  selector:
+    app: profile-service-lable
+  ports:
+  - protocol: TCP
+    port: 8095
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profile-service-deployment
+spec:
+  selector:
+      matchLabels:
+        app: profile-service-lable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: profile-service-lable
+    spec:
+      containers:
+        - name: booking-service-container
+          image: gcr.io/invertible-tree-252704/booking-service:latest
+          ports:
+            - containerPort: 80
