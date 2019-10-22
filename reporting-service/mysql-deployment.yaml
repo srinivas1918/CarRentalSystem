@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-auth-service
+  name: mysql-reporting-service
 spec:
   ports:
   - port: 3306
@@ -26,10 +26,10 @@ spec:
     spec:
       containers:
       - image: mysql:8.0
-        name: mysql-auth-service
+        name: mysql-reporting-service
         env:
         - name: MYSQL_DATABASE
-          value: 'auth-service-db'
+          value: 'reporting-service-db'
         # So you don't have to use root, but you can if you like
         - name: MYSQL_USER
           value: 'sa'
@@ -43,9 +43,9 @@ spec:
         - containerPort: 3306
           name: mysql
         volumeMounts:
-        - name: mysql-persistent-storage-auth
+        - name: mysql-persistent-storage-reporting
           mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-persistent-storage-auth
+      - name: mysql-persistent-storage-reporting
         persistentVolumeClaim:
-          claimName: mysql-pv-claim-auth
+          claimName: mysql-pv-claim-reporting
