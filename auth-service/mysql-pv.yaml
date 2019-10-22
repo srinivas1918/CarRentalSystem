@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv-volume-profile
+  name: mysql-pv-volume-auth
   labels:
     type: local
 spec:
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim-profile
+  name: mysql-pv-claim-auth
 spec:
   storageClassName: manual
   accessModes:
