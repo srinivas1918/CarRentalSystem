@@ -1,5 +1,6 @@
 package com.pramati.crs.config.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,8 +15,10 @@ public class OAuth2AccessTokenEntity {
 
 	@Id
 	private String authenticationId;
+	@Column(columnDefinition = "VARCHAR(4096)")
 	private byte[] accessToken;
 	private String userName;
+	@Column(columnDefinition = "VARCHAR(4096)")
 	private byte[] authentication;
 	private String tokenId;
 
