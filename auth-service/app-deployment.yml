@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-service-app
+  name: auth-service-deployment
 spec:
   selector:
       matchLabels:
