@@ -13,7 +13,7 @@ import com.pramati.crs.repository.UserProfilesRepository;
 import com.pramati.crs.vo.UserVo;
 
 @Service
-public class VendorServiceImpl implements VendorService {
+public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private UserProfilesRepository userProfileRepository;
@@ -21,7 +21,7 @@ public class VendorServiceImpl implements VendorService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	public void createVendor(UserVo user) throws Exception {
+	public void createAdmin(UserVo user) throws Exception {
 		Optional<UserProfile> existingUser = userProfileRepository.findById(user.getUsername());
 		if (existingUser.isPresent()) {
 			throw new Exception("User with username" + user.getUsername() + " already exists");
@@ -33,9 +33,8 @@ public class VendorServiceImpl implements VendorService {
 	private UserProfile generateUserProfile(UserVo user) {
 		UserProfile userProfile = new UserProfile(user.getUsername(), encoder.encode(user.getPassword()));
 		List<String> authorities = new ArrayList<>();
-		authorities.add("ROLE_VENDOR");
+		authorities.add("ROLE_ADMIN");
 		userProfile.setAuthorities(authorities);
 		return userProfile;
 	}
-
 }

@@ -19,11 +19,11 @@ public class CustomClientDetailsService implements ClientDetailsService {
 
 	@Override
 	public ClientDetails loadClientByClientId(String clientId) {
-		Optional<com.pramati.crs.config.entity.ClientDetails> userProfile = cientDetailsRepository
+		Optional<com.pramati.crs.entity.ClientDetails> userProfile = cientDetailsRepository
 				.findById(clientId);
 
 		if (userProfile.isPresent()) {
-			com.pramati.crs.config.entity.ClientDetails details = userProfile.get();
+			com.pramati.crs.entity.ClientDetails details = userProfile.get();
 			BaseClientDetails clientDetails = new BaseClientDetails();
 			clientDetails.setClientId(details.getClientId());
 			clientDetails.setAuthorizedGrantTypes(details.getAuthorizedGrantTypes());

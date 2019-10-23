@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pramati.crs.entity.ClientDetails;
-import com.pramati.crs.service.ClientDetailsService;
+import com.pramati.crs.service.AdminService;
+import com.pramati.crs.vo.UserVo;
 
 @RestController
-@RequestMapping(value = "/clients")
-public class ClientDetailsResource {
+@RequestMapping("/admins")
+public class AdminResource {
 
 	@Autowired
-	private ClientDetailsService clientDetailsService;
+	private AdminService userProfileService;
 
 	@RequestMapping(method = RequestMethod.POST, value = "/")
-	public String createClient(@RequestBody ClientDetails clientDetails) throws Exception {
-		clientDetailsService.createClient(clientDetails);
-		return "Client added Successfully";
+	public String createAdmin(@RequestBody UserVo user) throws Exception {
+		userProfileService.createAdmin(user);
+		return "Admin added Successfully";
 	}
 }
