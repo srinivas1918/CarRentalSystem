@@ -39,6 +39,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Value("${keystore.filename}")
 	private String fileName;
 
+	@Value("${spring.datasource.url}")
+	private String sqlUrl;
+
+	@Value("${spring.datasource.username}")
+	private String sqlUsername;
+
+	@Value("${spring.datasource.password}")
+	private String sqlPassword;
+
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 
@@ -85,9 +94,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public DriverManagerDataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/auth-service-db");
-		dataSource.setUsername("root");
-		dataSource.setPassword("password");
+		dataSource.setUrl(sqlUrl);
+		dataSource.setUsername(sqlUsername);
+		dataSource.setPassword(sqlPassword);
 		return dataSource;
 	}
 
