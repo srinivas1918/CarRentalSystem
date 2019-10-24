@@ -18,6 +18,12 @@ import org.springframework.stereotype.Component;
 import com.pramati.crs.entity.UserProfile;
 import com.pramati.crs.repository.UserProfilesRepository;
 
+/**
+ * Class to authenticate the user details 
+ * 
+ * @author manikanth
+ *
+ */
 @Component
 public class CustomUserProvider extends AbstractUserDetailsAuthenticationProvider {
 
@@ -27,6 +33,15 @@ public class CustomUserProvider extends AbstractUserDetailsAuthenticationProvide
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	/**
+	 * @param username       The username to retrieve
+	 * @param authentication The authentication request, to perform a binding-based
+	 *                       retrieval of the <code>UserDetails</code>
+	 *
+	 * @return the user information
+	 *
+	 * @throws AuthenticationException if the credentials could not be validated
+	 */
 	@Override
 	protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
 			throws AuthenticationException {

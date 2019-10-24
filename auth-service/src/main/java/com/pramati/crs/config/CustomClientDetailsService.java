@@ -11,6 +11,12 @@ import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 
 import com.pramati.crs.repository.ClientDetailsRepository;
 
+/**
+ * Configuration class for getting client details from database
+ * 
+ * @author manikanth
+ *
+ */
 @Configuration
 public class CustomClientDetailsService implements ClientDetailsService {
 
