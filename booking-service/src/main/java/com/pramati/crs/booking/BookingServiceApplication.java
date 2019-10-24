@@ -1,13 +1,13 @@
-package com.pramati.crs;
+package com.pramati.crs.booking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FareServiceApplication {
+public class BookingServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FareServiceApplication.class, args);
+		SpringApplication.run(BookingServiceApplication.class, args);
 	}
 
 }
