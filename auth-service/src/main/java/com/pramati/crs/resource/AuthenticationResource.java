@@ -24,6 +24,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+/**
+ * Rest Controller class for Login, Logout the user and Validate and refresh the
+ * Token
+ * 
+ * @author manikanth
+ *
+ */
 @RestController
 @RequestMapping(value = "/user")
 public class AuthenticationResource {
@@ -37,7 +44,19 @@ public class AuthenticationResource {
 	@Autowired
 	private AuthService authService;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/login")
+	/**
+	 * @param principal  The Basic user principal used for HTTP authentication
+	 * 
+	 * @param parameters User details (username, password) and grant_type in case of
+	 *                   getting token User details like refresh_token and
+	 *                   grant_type for getting access token from refresh token
+	 *
+	 * @return OAuth2AccessToken
+	 *
+	 * @throws HttpRequestMethodNotSupportedException if the method is not specified
+	 *                                                correctly
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "/token")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Login successfull."),
 			@ApiResponse(code = 401, message = "Unauthorized access.") })
 	@ApiOperation(value = "Common Login for Customer, Vendor and Admin")
@@ -46,6 +65,11 @@ public class AuthenticationResource {
 		return tokenEndpoint.postAccessToken(principal, parameters);
 	}
 
+	/**
+	 * @param request
+	 * 
+	 * @return String with the logout status
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/logout")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Logout successfull."),
 			@ApiResponse(code = 400, message = "Logout Unsuccessfull.") })
@@ -59,6 +83,11 @@ public class AuthenticationResource {
 		}
 	}
 
+	/**
+	 * @param accessToken
+	 * 
+	 * @return Map JSON with the token details
+	 */
 	@RequestMapping(value = "/validateToken", method = RequestMethod.GET)
 	@ApiOperation(value = "Validate the token")
 	public Map<String, ?> validateToken(@RequestParam String accessToken) {

@@ -1,4 +1,4 @@
-package com.pramati.crs.service;
+package com.pramati.crs.service.impl;
 
 import java.util.Optional;
 
@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.pramati.crs.entity.ClientDetails;
 import com.pramati.crs.repository.ClientDetailsRepository;
+import com.pramati.crs.service.ClientDetailsService;
+
+/**
+ * Service class for client related services
+ * 
+ * @author manikanth
+ */
 
 @Service
 public class ClientDetailsServiceImpl implements ClientDetailsService {
@@ -18,6 +25,13 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	/**
+	 * @param user The client details to save
+	 *
+	 * @return ClientDetails
+	 * 
+	 * @throws Exception if the client with given clientId already exists
+	 */
 	@Override
 	public ClientDetails createClient(ClientDetails clientDetails) throws Exception {
 		Optional<ClientDetails> existingClientDetails = cientDetailsRepository.findById(clientDetails.getClientId());
