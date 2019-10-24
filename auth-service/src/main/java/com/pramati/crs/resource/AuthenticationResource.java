@@ -56,7 +56,7 @@ public class AuthenticationResource {
 	 * @throws HttpRequestMethodNotSupportedException if the method is not specified
 	 *                                                correctly
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "/login")
+	@RequestMapping(method = RequestMethod.POST, value = "/token")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Login successfull."),
 			@ApiResponse(code = 401, message = "Unauthorized access.") })
 	@ApiOperation(value = "Common Login for Customer, Vendor and Admin")
