@@ -1,4 +1,4 @@
-package com.pramati.crs.service;
+package com.pramati.crs.service.impl;
 
 import java.util.Optional;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pramati.crs.entity.ClientDetails;
 import com.pramati.crs.repository.ClientDetailsRepository;
+import com.pramati.crs.service.ClientDetailsService;
 
 /**
  * Service class for client related services

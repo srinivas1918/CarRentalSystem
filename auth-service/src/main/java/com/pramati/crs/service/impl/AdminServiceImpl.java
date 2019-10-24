@@ -1,4 +1,4 @@
-package com.pramati.crs.service;
+package com.pramati.crs.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.pramati.crs.dto.UserDTO;
 import com.pramati.crs.entity.UserProfile;
 import com.pramati.crs.repository.UserProfilesRepository;
+import com.pramati.crs.service.AdminService;
 
 /**
  * Service Class for Admin related services

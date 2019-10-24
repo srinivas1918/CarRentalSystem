@@ -1,10 +1,12 @@
-package com.pramati.crs.service;
+package com.pramati.crs.service.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.stereotype.Service;
+
+import com.pramati.crs.service.AuthService;
 
 /**
  * Service class for auth related services

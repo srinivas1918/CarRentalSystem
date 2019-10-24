@@ -1,4 +1,4 @@
-package com.pramati.crs.service;
+package com.pramati.crs.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,15 @@ import org.springframework.stereotype.Service;
 import com.pramati.crs.dto.UserDTO;
 import com.pramati.crs.entity.UserProfile;
 import com.pramati.crs.repository.UserProfilesRepository;
+import com.pramati.crs.service.VendorService;
 
 /**
- * Service class for customer related services
+ * Service class for vendor related services
  * 
  * @author manikanth
  */
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class VendorServiceImpl implements VendorService {
 
 	@Autowired
 	private UserProfilesRepository userProfileRepository;
@@ -27,11 +28,11 @@ public class CustomerServiceImpl implements CustomerService {
 	private BCryptPasswordEncoder encoder;
 
 	/**
-	 * @param user The customer details to register
+	 * @param user The vendor details to register
 	 *
-	 * @throws Exception if the customer with given username already exists
+	 * @throws Exception if the vendor with given username already exists
 	 */
-	public void createCustomer(UserDTO user) throws Exception {
+	public void createVendor(UserDTO user) throws Exception {
 		Optional<UserProfile> existingUser = userProfileRepository.findById(user.getUsername());
 		if (existingUser.isPresent()) {
 			throw new Exception("User with username" + user.getUsername() + " already exists");
@@ -41,15 +42,16 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	/**
-	 * @param user The customer details to register
+	 * @param user The vendor details to register
 	 *
 	 * @return UserProfile user profile details obtained from userVo
 	 */
 	private UserProfile generateUserProfile(UserDTO user) {
 		UserProfile userProfile = new UserProfile(user.getUsername(), encoder.encode(user.getPassword()));
 		List<String> authorities = new ArrayList<>();
-		authorities.add("ROLE_CUST");
+		authorities.add("ROLE_VENDOR");
 		userProfile.setAuthorities(authorities);
 		return userProfile;
 	}
+
 }
