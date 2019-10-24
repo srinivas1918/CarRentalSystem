@@ -7,6 +7,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -29,8 +30,8 @@ public class SweggerConfig {
 	}
 
 	private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Profile-Service Rest API")
-                .description("Profile service rest api").contact("srinivas.")
+        return new ApiInfoBuilder().contact(new Contact("Srinivas Nalla", "http://www.pramati.com", "srinivas.nalla@imaginea")).title("Profile-Service Rest API")
+                .description("Profile service rest api")
                 .version("1.0.0")
                 .build();
 	}
