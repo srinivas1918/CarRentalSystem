@@ -7,6 +7,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/**
+ * Configuration class for Web security
+ * 
+ * @author manikanth
+ *
+ */
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 

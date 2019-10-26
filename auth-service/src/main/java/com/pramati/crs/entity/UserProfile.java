@@ -10,6 +10,13 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
+
+/**
+ * Entity class to represent UserProfiles table
+ * 
+ * @author manikanth
+ *
+ */
 @Entity
 @Table(name = "UserProfiles")
 public class UserProfile {

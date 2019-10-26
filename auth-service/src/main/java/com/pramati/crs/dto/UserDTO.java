@@ -1,6 +1,12 @@
-package com.pramati.crs.vo;
+package com.pramati.crs.dto;
 
-public class UserVo {
+/**
+ * DTO for userDetails
+ * 
+ * @author manikanth
+ *
+ */
+public class UserDTO {
 
 	private String username;
 	private String password;

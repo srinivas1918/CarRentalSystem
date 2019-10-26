@@ -8,6 +8,13 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity class to represent ClientDetails table
+ * 
+ * @author manikanth
+ *
+ */
+
 @Table(name = "ClientDetails")
 @Entity
 public class ClientDetails {
