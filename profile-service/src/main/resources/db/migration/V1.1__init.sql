@@ -80,6 +80,3 @@ CREATE TABLE `crs_profile_schema`.`CRS_CARS` (
     REFERENCES `crs_profile_schema`.`CRS_LOCATONS` (`LOCATION_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
-
-

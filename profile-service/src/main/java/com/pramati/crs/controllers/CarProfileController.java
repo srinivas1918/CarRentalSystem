@@ -26,6 +26,7 @@ import com.pramati.crs.service.ICarService;
 @RequestMapping("v1/cars")
 public class CarProfileController extends AbstractDataConroller<CarDTO, Long>{
 
+
 	ICarService carService;
 	
 	@Autowired
@@ -41,3 +42,4 @@ public class CarProfileController extends AbstractDataConroller<CarDTO, Long>{
 	}
 
 }
+
