@@ -22,6 +22,21 @@ public class FareDTO extends ResourceSupport {
 
 	private boolean isActive;
 
+	public FareDTO() {
+	}
+
+	public FareDTO(long fareId, double fare, Date effeciveFrom, Date effectiveUpto, String carCategory, String carType,
+			long vendorId, boolean isActive) {
+		this.fareId = fareId;
+		this.fare = fare;
+		this.effeciveFrom = effeciveFrom;
+		this.effectiveUpto = effectiveUpto;
+		this.carCategory = carCategory;
+		this.carType = carType;
+		this.vendorId = vendorId;
+		this.isActive = isActive;
+	}
+
 	public long getFareId() {
 		return fareId;
 	}
