@@ -1,7 +1,10 @@
 server:
   port: 8094
-  servlet:
-    context-path: /fare-service/v1/
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka
   
 spring:
   datasource:

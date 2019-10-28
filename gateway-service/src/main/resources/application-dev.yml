@@ -1,0 +1,16 @@
+server:
+  port: 8091
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka
+      
+zuul:
+  routes:
+    fare-service:
+      serviceId: fare-service
+    booking-service:
+      serviceId: booking-service
+  host:
+    socket-timeout-millis: 30000
