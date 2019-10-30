@@ -1,5 +1,7 @@
 package com.pramati.crs;
 
+import java.util.Arrays;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +25,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class AuthServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthServiceApplication.class, args);
+		String[] extededArgs = Arrays.copyOf(args, args.length+1);
+		extededArgs[args.length] = "-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector";
+		SpringApplication.run(AuthServiceApplication.class, extededArgs);
 	}
 
 	/**

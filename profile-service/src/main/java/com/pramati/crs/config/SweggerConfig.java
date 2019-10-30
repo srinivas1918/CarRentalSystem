@@ -1,7 +1,7 @@
 package com.pramati.crs.config;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *  
  *  Enables the swaggers api
  */
-@Configurable
+@Configuration
 @EnableSwagger2
 public class SweggerConfig {
 

@@ -12,8 +12,8 @@
         </Console>
 
         <!-- Rolling File Appender -->
-        <RollingFile name="FileAppender" fileName="/tmp/profile-service-log/profile-service.log"
-                     filePattern="/tmp/profile-service-log/profile-service-%d{yyyy-MM-dd-hh-mm}.log">
+        <RollingFile name="FileAppender" fileName="/tmp/search-service-log/profile-service.log"
+                     filePattern="/tmp/search-service-log/profile-service-%d{yyyy-MM-dd-hh-mm}.log">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
