@@ -40,7 +40,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	private String pwd;
 
 	@Value("${keystore.alias}")
-	private String alias = "server-alias";
+	private String alias;
 
 	@Value("${keystore.filename}")
 	private String fileName;
@@ -69,7 +69,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.authenticationManager(authenticationManager).tokenServices(tokenServices()).tokenStore(tokenStore())
 				.accessTokenConverter(jwtAccessTokenConverter());
-		endpoints.pathMapping("/oauth/token", "/user/login");
+		endpoints.pathMapping("/oauth/token", "/user/token");
 		endpoints.pathMapping("/oauth/check_token", "/user/validateToken");
 	}
 
