@@ -92,4 +92,48 @@ public class ClientDetails {
 		this.clientId = clientId;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClientDetails other = (ClientDetails) obj;
+		if (accessTokenValiditySeconds == null) {
+			if (other.accessTokenValiditySeconds != null)
+				return false;
+		} else if (!accessTokenValiditySeconds.equals(other.accessTokenValiditySeconds))
+			return false;
+		if (authorizedGrantTypes == null) {
+			if (other.authorizedGrantTypes != null)
+				return false;
+		} else if (!authorizedGrantTypes.equals(other.authorizedGrantTypes))
+			return false;
+		if (autoApproveScopes != other.autoApproveScopes)
+			return false;
+		if (clientId == null) {
+			if (other.clientId != null)
+				return false;
+		} else if (!clientId.equals(other.clientId))
+			return false;
+		if (clientSecret == null) {
+			if (other.clientSecret != null)
+				return false;
+		} else if (!clientSecret.equals(other.clientSecret))
+			return false;
+		if (refreshTokenValiditySeconds == null) {
+			if (other.refreshTokenValiditySeconds != null)
+				return false;
+		} else if (!refreshTokenValiditySeconds.equals(other.refreshTokenValiditySeconds))
+			return false;
+		if (scopes == null) {
+			if (other.scopes != null)
+				return false;
+		} else if (!scopes.equals(other.scopes))
+			return false;
+		return true;
+	}
+
 }
