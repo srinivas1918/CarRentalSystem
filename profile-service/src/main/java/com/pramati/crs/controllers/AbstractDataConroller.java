@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.pramati.crs.controller.interfaces.IBaseController;
+import com.pramati.crs.service.IBaseService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -22,9 +23,17 @@ import io.swagger.annotations.ApiOperation;
  * 
  * @param <E> : Entity 
  * @param <I> : Data Type
+ * @param <T>
  */
 public abstract class AbstractDataConroller<E, I extends Serializable> implements IBaseController<E, I>{
 
+
+	private IBaseService<E, I> baseService;
+	
+	public AbstractDataConroller(IBaseService<E, I> baseService) {
+		this.baseService = baseService;
+	}
+	
 	/**
 	 * @see IBaseController#save(Object)
 	 * 
@@ -36,7 +45,7 @@ public abstract class AbstractDataConroller<E, I extends Serializable> implement
 	@ApiOperation(notes = "save", value = "save or updates")
 	@Override
 	public void save(@RequestBody E e) {
-		// TODO 		
+		baseService.save(e);
 	}
 
 	/**
@@ -48,8 +57,7 @@ public abstract class AbstractDataConroller<E, I extends Serializable> implement
 	@ApiOperation(notes = "list", value = "returns the List")
 	@Override
 	public List<E> list() {
-		// TODO 
-		return null;
+		return baseService.list();
 	}
 
 	/**
@@ -59,9 +67,8 @@ public abstract class AbstractDataConroller<E, I extends Serializable> implement
 	@ResponseStatus(code = HttpStatus.OK)
 	@Override
 	public E getObject(@PathVariable I id) {
-		// TODO 
-		return null;
+		return baseService.get(id);
 	}
-
-
+	
+	
 }

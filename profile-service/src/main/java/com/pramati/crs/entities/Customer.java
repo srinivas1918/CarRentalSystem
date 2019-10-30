@@ -1,37 +1,59 @@
-package com.pramati.crs.profiles.dto;
+package com.pramati.crs.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.pramati.crs.constants.Gender;
 
-public class CustomerDTO {
+@Entity
+@Table(name = "CRS_CUSTOMER")
+public class Customer {
 
+	@Id
+	@Column(name = "CUSTOMER_ID")
 	private Long id;
 	
+	@Column(name = "CUSTOMER_NAME")
 	private String customerName;
 	
+	@Column(name = "CUSTOMER_AGE")
 	private Integer customerAge;
 	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "CUSTOMER_GENDER")
 	private Gender customerGender;
 	
+	@Column(name = "CUSTOMER_PHONE")
 	private String customerPhone;
 	
+	@Column(name = "CUSTOMER_EMAIL")
 	private String customerEmail;
 	
+	@Column(name = "CUSTOMER_ADDRESS")
 	private String customerAddress;
 	
+	@Column(name = "CUSTOMER_LIECENCE")
 	private String customerLicence;
 	
+	@Column(name = "CUSTOMER_PAN")
 	private String customerPAN;
 	
+	@Column(name = "CUSTOMER_ADHAAR")
 	private String customerAdhaar;
 	
+	@Column(name = "CUSTOMER_REG_DATE")
 	private Date customerRegDate;
 
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -76,6 +98,7 @@ public class CustomerDTO {
 		this.customerEmail = customerEmail;
 	}
 
+	
 	public String getCustomerAddress() {
 		return customerAddress;
 	}
@@ -108,13 +131,11 @@ public class CustomerDTO {
 		this.customerAdhaar = customerAdhaar;
 	}
 
-	public Date getCustomerRegDate() {
-		return customerRegDate;
-	}
-
 	public void setCustomerRegDate(Date customerRegDate) {
 		this.customerRegDate = customerRegDate;
 	}
-
 	
+	public Date getCustomerRegDate() {
+		return customerRegDate;
+	}
 }
