@@ -1,9 +1,11 @@
 package com.pramati.crs.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pramati.crs.profiles.dto.VendorDTO;
+import com.pramati.crs.service.IVendorService;
 
 /**
  * 
@@ -15,4 +17,9 @@ import com.pramati.crs.profiles.dto.VendorDTO;
 @RestController
 @RequestMapping("v1/vendors")
 public class VendorProfileController extends AbstractDataConroller<VendorDTO, Long>{
+
+	@Autowired
+	public VendorProfileController(IVendorService vendorService) {
+		super(vendorService);
+	}
 }
