@@ -1,0 +1,23 @@
+zuul:
+   routes:
+      auth-service:
+         path: /auth-service/**
+         url: http://localhost:8096
+         sensitiveHeaders: 
+      search-service:
+         path: /search-service/**
+         url: http://localhost:8092
+      booking-service:
+         path: /booking-service/**
+         url: http://localhost:8093
+      fare-service:
+         path: /fare-service/**
+         url: http://localhost:8094
+      reporting-service:
+         path: /reporting-service/**
+         url: http://localhost:8097
+      profile-service:
+         path: /profile-service/**
+         url: http://localhost:8095
+auth:
+   url: http://localhost:8096
