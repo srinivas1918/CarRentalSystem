@@ -6,23 +6,23 @@ spec:
   ports:
   - port: 3306
   selector:
-    app: mysql
+    app: mysql-auth-l
   type: ClusterIP
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-auth-d
 spec:
   selector:
     matchLabels:
-      app: mysql
+      app: mysql-auth-l
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: mysql
+        app: mysql-auth-l
     spec:
       containers:
       - image: mysql:8.0
@@ -48,4 +48,4 @@ spec:
       volumes:
       - name: mysql-persistent-storage-auth
         persistentVolumeClaim:
-          claimName: mysql-pv-claim-auth
+          claimName: mysql-pv-claim-crs
