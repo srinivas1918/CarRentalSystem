@@ -1,0 +1,23 @@
+zuul:
+   routes:
+      auth-service:
+         path: /auth-service/**
+         url: http://auth-service
+         sensitiveHeaders: 
+      search-service:
+         path: /search-service/**
+         url: http://search-service
+      booking-service:
+         path: /banking-service/**
+         url: http://banking-service
+      fare-service:
+         path: /fare-service/**
+         url: http://fare-service
+      reporting-service:
+         path: /reporting-service/**
+         url: http://reporting-service
+      profile-service:
+         path: /profile-service/**
+         url: http://profile-service
+auth:
+   url: http://auth-service
