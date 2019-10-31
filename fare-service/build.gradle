@@ -3,9 +3,6 @@ configurations {
 	runtimeClasspath {
 		extendsFrom developmentOnly
 	}
-	all {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
 }
 
 dependencies {
@@ -17,6 +14,4 @@ dependencies {
 	implementation 'org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE'
 	runtimeOnly 'mysql:mysql-connector-java'
 	implementation 'com.h2database:h2:1.4.200'
-	implementation 'com.lmax:disruptor:3.4.0'
-	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 }

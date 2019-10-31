@@ -30,30 +30,21 @@ spec:
         env:
         - name: MYSQL_DATABASE
           value: 'booking-service-db'
-       # So you don't have to use root, but you can if you like
+        # So you don't have to use root, but you can if you like
         - name: MYSQL_USER
-          valueFrom:
-             secretKeyRef:
-               name: db-credentials
-               key: mysql-user
+          value: 'sa'
          # You can use whatever password you like Use secret in real usage
         - name: MYSQL_PASSWORD
-          valueFrom:
-             secretKeyRef:
-               name: db-credentials
-               key: mysql-password
+          value: 'password@123'
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-             secretKeyRef:
-               name: db-credentials
-               key: mysql-root-password
+          value: password
         ports:
         - containerPort: 3306
           name: mysql
         volumeMounts:
         - name: mysql-persistent-storage-booking
-          mountPath: /var/lib/mysql_booking
+          mountPath: /var/lib/mysql
       volumes:
       - name: mysql-persistent-storage-booking
         persistentVolumeClaim:
