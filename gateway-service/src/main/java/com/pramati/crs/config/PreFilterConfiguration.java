@@ -23,7 +23,7 @@ import com.pramati.crs.response.ErrorResponse;
 /**
  * @author manikanth
  * 
- * class for intercepting the calls and validating the token
+ *         class for intercepting the calls and validating the token
  */
 
 @Component
@@ -41,6 +41,16 @@ public class PreFilterConfiguration extends ZuulFilter {
 	@Override
 	public boolean shouldFilter() {
 		return true;
+	}
+
+	@Override
+	public String filterType() {
+		return "pre";
+	}
+
+	@Override
+	public int filterOrder() {
+		return 1;
 	}
 
 	@Override
@@ -86,8 +96,16 @@ public class PreFilterConfiguration extends ZuulFilter {
 	}
 
 	private boolean profileServiceChecks(String token, String reqUri) {
-		// TODO Profile service checks needs to be added
-		return true;
+		if (reqUri.contains("/locations") || reqUri.contains("/cities")) {
+			return checkRole("ROLE_ADMIN", getAuthorities(token));
+		} else if (reqUri.contains("/customers")) {
+			return checkRole("ROLE_CUST", getAuthorities(token));
+		} else if (reqUri.contains("/cars") || reqUri.contains("/vendors")) {
+			List<String> authorities = getAuthorities(token);
+			return (checkRole("ROLE_ADMIN", authorities) || checkRole("ROLE_VENDOR", authorities));
+		} else {
+			return true;
+		}
 	}
 
 	private boolean reportingServiceChecks(String token, String reqUri) {
@@ -101,13 +119,11 @@ public class PreFilterConfiguration extends ZuulFilter {
 	}
 
 	private boolean authServiceChecks(String token, String reqUri) {
-		boolean validUser = false;
 		if (reqUri.contains("/admins") || reqUri.contains("/vendors") || reqUri.contains("/clients")) {
-			validUser = checkRole("ROLE_ADMIN", getAuthorities(token));
+			return checkRole("ROLE_ADMIN", getAuthorities(token));
 		} else {
-			validUser = true;
+			return true;
 		}
-		return validUser;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -138,16 +154,6 @@ public class PreFilterConfiguration extends ZuulFilter {
 		} else {
 			return false;
 		}
-	}
-
-	@Override
-	public String filterType() {
-		return "pre";
-	}
-
-	@Override
-	public int filterOrder() {
-		return 1;
 	}
 
 }
