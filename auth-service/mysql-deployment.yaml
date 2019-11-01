@@ -6,23 +6,23 @@ spec:
   ports:
   - port: 3306
   selector:
-    app: mysql
+    app: mysql-auth-l
   type: ClusterIP
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-auth-d
 spec:
   selector:
     matchLabels:
-      app: mysql
+      app: mysql-auth-l
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: mysql
+        app: mysql-auth-l
     spec:
       containers:
       - image: mysql:8.0
@@ -32,29 +32,20 @@ spec:
           value: 'auth-service-db'
         # So you don't have to use root, but you can if you like
         - name: MYSQL_USER
-          valueFrom:
-             secretKeyRef:
-               name: db-credentials
-               key: mysql-user
+          value: 'sa'
          # You can use whatever password you like Use secret in real usage
         - name: MYSQL_PASSWORD
-          valueFrom:
-             secretKeyRef:
-               name: db-credentials
-               key: mysql-password
+          value: 'password@123'
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-             secretKeyRef:
-               name: db-credentials
-               key: mysql-root-password
+          value: password
         ports:
         - containerPort: 3306
           name: mysql
         volumeMounts:
         - name: mysql-persistent-storage-auth
-          mountPath: /var/lib/mysql_auth
+          mountPath: /var/lib/mysql
       volumes:
       - name: mysql-persistent-storage-auth
         persistentVolumeClaim:
-          claimName: mysql-pv-claim-auth
+          claimName: mysql-pv-claim-crs
