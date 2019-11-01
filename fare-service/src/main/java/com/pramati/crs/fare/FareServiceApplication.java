@@ -15,6 +15,7 @@ public class FareServiceApplication {
 		SpringApplication.run(FareServiceApplication.class, args);
 	}
 
+
 	@Bean
 	FilterRegistrationBean<ForwardedHeaderFilter> forwardedHeaderFilter() {
 		FilterRegistrationBean<ForwardedHeaderFilter> bean = new FilterRegistrationBean<>();

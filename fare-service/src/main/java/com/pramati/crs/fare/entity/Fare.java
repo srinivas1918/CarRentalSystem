@@ -15,11 +15,10 @@ import org.springframework.hateoas.ResourceSupport;
 @Table(name = "RS_FARE")
 public class Fare extends ResourceSupport {
 
-	@Id
+@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private long fareId;
-
 	@Column(name = "CAR_CATEGORY")
 	private String carCategory;
 

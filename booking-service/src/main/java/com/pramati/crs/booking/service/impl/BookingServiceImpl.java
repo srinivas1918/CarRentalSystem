@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import com.pramati.crs.booking.client.FareServiceClient;
 import com.pramati.crs.booking.dto.BookingDTO;
 import com.pramati.crs.booking.dto.NewBookingDTO;
 import com.pramati.crs.booking.dto.client.FareDTO;
+
 import com.pramati.crs.booking.entity.Booking;
 import com.pramati.crs.booking.entity.Booking.BookingStatus;
 import com.pramati.crs.booking.exception.APIException;
@@ -94,13 +96,13 @@ public class BookingServiceImpl implements BookingService {
 
 		// create new booking object
 		Booking booking = new Booking();
-
 		booking.setUserId(newBookingDto.getUserId());
 		booking.setCarId(newBookingDto.getCarId());
 		booking.setLocationId(newBookingDto.getLocationId());
 		booking.setFromDate(newBookingDto.getFromDate());
 		booking.setToDate(newBookingDto.getToDate());
 		booking.setBookingStatus(BookingStatus.BOOKED);
+
 
 		// Fetch fare details from fare service
 		FareDTO farePerDay;

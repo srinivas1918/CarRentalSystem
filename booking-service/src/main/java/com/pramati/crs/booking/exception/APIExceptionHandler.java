@@ -9,6 +9,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.pramati.crs.booking.dto.MessageDTO;
 
@@ -34,7 +40,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 		} else if (e instanceof MethodArgumentNotValidException) {
 			MethodArgumentNotValidException me = (MethodArgumentNotValidException) e;
 			errorMessage = me.getBindingResult().getFieldError().getDefaultMessage();
-		}
+      }
 		return new ResponseEntity<>(new MessageDTO(errorMessage), HttpStatus.BAD_REQUEST);
 	}
 

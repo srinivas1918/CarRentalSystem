@@ -1,6 +1,11 @@
+server:
+   port: 8091
+   
 spring:
-  profiles:
-    active:
-    - dev
-  application:
-    name: gateway-service
+   profiles:
+      active: prod
+   application:
+      name: gateway-service
+auth:
+   client: client
+   secret: secret

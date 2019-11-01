@@ -1,0 +1,25 @@
+server:
+   port: 80
+zuul:
+   routes:
+      auth-service:
+         path: /auth-service/**
+         url: http://auth-service:8096
+         sensitiveHeaders: 
+      search-service:
+         path: /search-service/**
+         url: http://search-service:8092
+      booking-service:
+         path: /banking-service/**
+         url: http://banking-service:8093
+      fare-service:
+         path: /fare-service/**
+         url: http://fare-service:8094
+      reporting-service:
+         path: /reporting-service/**
+         url: http://reporting-service:8097
+      profile-service:
+         path: /profile-service/**
+         url: http://profile-service:8095
+auth:
+   url: http://auth-service:8096
