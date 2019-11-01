@@ -6,27 +6,27 @@ spec:
   ports:
   - port: 3306
   selector:
-    app: mysql
+    app: mysql-profile-l
   type: ClusterIP
 ---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-profile-d
 spec:
   selector:
     matchLabels:
-      app: mysql
+      app: mysql-profile-l
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: mysql
+        app: mysql-profile-l
     spec:
       containers:
       - image: mysql:8.0
-        name: mysql-profile-service
+        name: mysql-profile-c
         env:
         - name: MYSQL_DATABASE
           value: 'profile-service-db'
